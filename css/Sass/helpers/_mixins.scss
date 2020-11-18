@@ -1,0 +1,47 @@
+
+/* media query mixin for help only*/
+
+@mixin minmedium {
+  @media (min-width: 992px)
+  {
+    @content;
+  }
+}
+
+/* overlay mixin */
+@mixin overlay
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+/* prefixes mixin
+ ** add prefixes auto to properties
+ */
+ @mixin prefixer($property , $value , $prefixes:() )
+ {
+   @each $prefix in $prefixes {
+     #{'-' + $prefix + '-' + $property }: $value;
+
+   }
+   #{$property}:$value;
+ }
+
+ /* animation mixin
+  ** add prefixes auto to animation
+  */
+
+@mixin keyframe ($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
